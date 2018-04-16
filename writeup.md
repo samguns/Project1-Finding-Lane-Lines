@@ -31,3 +31,9 @@ One shortcoming is I used 4 global variables to calculate the average slope and 
 A possible improvement would be to eliminate global variables.
 
 Another possible improvement would be to try a better average calculation. I kept a slope list that takes in only 20 entries, and dumped the oldest ones in the next process.
+
+So far all videos/images I have tested with have clear lane marks. If situation occurs that current pipeline doesn't distinguish one lane line for a few seconds, it won't work as expected. It'll be a nice improvement if it could extrapolate the line according to the other lane line.
+
+The slope filter I employed is kind of a hack since it's a fixed range based on empirical observation. When an abrupt turn on the road happens, it simply can not capture the correct lane lines. An adaptive filter has to be considered.
+
+The current pipeline utilizes four-sided polygon which I think it covers too much areas. This brings more noises or unnecessary pixels to process. One possible way to improve it might define a narrower ROI or better, define a specific ROI for left/right lane separately.
